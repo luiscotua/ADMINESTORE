@@ -1,0 +1,628 @@
+{% load static %}
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>AdmineStore</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <!-- <link rel="stylesheet" type="text/css" href="/static/admin/css/fonts.css"> -->
+        <link rel="stylesheet" href="{% static '/assets/css/styleanime.css' %}" />
+        <link rel="shortcut icon" type="image/ico" href="{% static 'assets/images/favicon.ico' %}"/>
+        <style type="text/css">
+          body, main {
+            margin: 0 auto;
+          }
+          .body, .tip {
+            stroke: #fff;
+          }
+          html {
+            line-height: 1.15;
+            -ms-text-size-adjust: 100%;
+            -webkit-text-size-adjust: 100%;
+            box-sizing: border-box;
+          }
+          footer, header, main {
+            display: block;
+          }
+          a {
+            background-color: transparent;
+            -webkit-text-decoration-skip: objects;
+            color: #47bac1;
+            text-decoration: none;
+          }
+          img {
+            border-style: none;
+          }
+          /* header {
+            border-bottom: 1px solid #d6d6d6;
+          } */
+          svg:not(:root) {
+            overflow: hidden;
+          }
+          body {
+            background: #ecf2f6;
+            max-width: 960px;
+            color: #525252;
+            font-family: Roboto, sans-serif;
+          }
+          main {
+            text-align: center;
+          }
+          .u-clearfix:after {
+            content: "";
+            clear: both;
+            display: table;
+          }
+          .exhaust.two, .fuel, .removehole {
+            display: none;
+          }
+          h1, h2, h3, h4, h5, p, ul {
+            padding: 0;
+            margin: 0;
+            font-weight: 400;
+          }
+          header {
+            padding-top: 20px;
+            padding-bottom: 10px;
+          }
+          .logo {
+            float: left;
+          }
+          .logo h2 {
+            font-weight: 700;
+            margin-top: 0px;
+          }
+          .release-notes {
+            float: right;
+            margin-top: 6px;
+          }
+          .release-notes p {
+            font-size: 14px;
+          }
+          /* .figure {
+            margin-top: 19vh;
+            height: 181px;
+          } */
+          /* figura a borrar */
+          /* .figure__animation {
+            max-width: 265px;
+            position: relative;
+            z-index: -9;
+          }
+          .tip {
+            stroke-width: 3px;
+            -webkit-transform: translateY(-7px);
+            transform: translateY(-7px);
+          }
+          .body {
+            fill: #6DDCBD;
+            -webkit-transform: scaleX(1.25);
+            transform: scaleX(1.25);
+            -webkit-transform-origin: center;
+            transform-origin: center;
+            stroke-width: 3px;
+          }
+          .box {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+          }
+          .circle {
+            fill: #6DDCBD;
+            stroke: #fff;
+            stroke-width: 7px;
+          }
+          .exhaust {
+            border-bottom-left-radius: 4px;
+          }
+          .exhaust.two, .exhaust__line {
+            -webkit-animation: thurst 70ms infinite ease-in-out alternate;
+            animation: thurst 70ms infinite ease-in-out alternate;
+          }
+          .smoke {
+            -webkit-animation: smoke .1s infinite ease-in-out alternate;
+            animation: smoke .1s infinite ease-in-out alternate;
+            -webkit-transform-origin: center;
+            transform-origin: center;
+            opacity: .8;
+          }
+          @-moz-document url-prefix() {
+            .smoke {
+              animation: smokeFirefox .2s infinite ease-in-out alternate;
+            }
+          }
+          @-webkit-keyframes smoke {
+            0% {
+              -webkit-transform: scale(1.58, 1.2) translateY(-55px) skew(3deg);
+              transform: scale(1.58, 1.2) translateY(-55px) skew(3deg);
+            }
+            100% {
+              -webkit-transform: scale(1.6, 1.22) translateY(-55px) skew(-3deg);
+              transform: scale(1.6, 1.22) translateY(-55px) skew(-3deg);
+            }
+          }
+          @keyframes smoke {
+            0% {
+              -webkit-transform: scale(1.58, 1.2) translateY(-55px) skew(3deg);
+              transform: scale(1.58, 1.2) translateY(-55px) skew(3deg);
+            }
+            100% {
+              -webkit-transform: scale(1.6, 1.22) translateY(-55px) skew(-3deg);
+              transform: scale(1.6, 1.22) translateY(-55px) skew(-3deg);
+            }
+          }
+          @-webkit-keyframes smokeFirefox {
+            0% {
+              -webkit-transform: scale(1.58, 1.2) translateY(-75px) skew(0);
+              transform: scale(1.58, 1.2) translateY(-75px) skew(0);
+            }
+            100% {
+              -webkit-transform: scale(1.58, 1.21) translateY(-75px) skew(1deg);
+              transform: scale(1.58, 1.21) translateY(-75px) skew(1deg);
+            }
+          }
+          @keyframes smokeFirefox {
+            0% {
+              -webkit-transform: scale(1.58, 1.2) translateY(-75px) skew(0);
+              transform: scale(1.58, 1.2) translateY(-75px) skew(0);
+            }
+            100% {
+              -webkit-transform: scale(1.58, 1.21) translateY(-75px) skew(1deg);
+              transform: scale(1.58, 1.21) translateY(-75px) skew(1deg);
+            }
+          }
+          .flame, .flame {
+            -webkit-transform: translate(265px, 249px) scale(1.9) rotate(180deg);
+            transform: translate(265px, 249px) scale(1.9) rotate(180deg);
+          }
+          .flame {
+            -webkit-animation: burnInner2 .1s infinite ease-in-out alternate;
+            animation: burnInner2 .1s infinite ease-in-out alternate;
+          }
+          @-webkit-keyframes burnInner2 {
+            0% {
+              -webkit-transform: translate(265px, 249px) scale(1.9) rotate(180deg) skew(5deg);
+              transform: translate(265px, 249px) scale(1.9) rotate(180deg) skew(5deg);
+            }
+            100% {
+              -webkit-transform: translate(265px, 253px) scale(2.2) rotate(180deg) skew(-5deg);
+              transform: translate(265px, 253px) scale(2.2) rotate(180deg) skew(-5deg);
+            }
+          }
+          @keyframes burnInner2 {
+            0% {
+              -webkit-transform: translate(265px, 249px) scale(1.9) rotate(180deg) skew(5deg);
+              transform: translate(265px, 249px) scale(1.9) rotate(180deg) skew(5deg);
+            }
+            100% {
+              -webkit-transform: translate(265px, 253px) scale(2.2) rotate(180deg) skew(-5deg);
+              transform: translate(265px, 253px) scale(2.2) rotate(180deg) skew(-5deg);
+            }
+          }
+          @-webkit-keyframes thurst {
+            0% {
+              opacity: 1;
+            }
+            100% {
+              opacity: .5;
+            }
+          }
+          @keyframes thurst {
+            0% {
+              opacity: 1;
+            }
+            100% {
+              opacity: .5;
+            }
+          } */
+          h2 {
+            font-size: 22px;
+            max-width: 500px;
+            margin: 5px auto 0;
+          }
+          main p {
+            font-size: 16px;
+            line-height: 20px;
+            max-width: 390px;
+            margin: 15px auto 0;
+            color: #888888;
+          }
+          footer {
+            padding: 25px 0;
+            position: fixed;
+            left: 50%;
+            bottom: 0;
+            width: 960px;
+            -webkit-transform: translateX(-50%);
+            transform: translateX(-50%);
+            -webkit-transform-style: preserve-3d;
+            transform-style: preserve-3d;
+            border-top: 1px solid #d6d6d6;
+          }
+          .option {
+            display: flex;
+            justify-content: center;
+            /* float: left;
+            width: 33.33%; */
+            box-sizing: border-box;
+            padding-right: 5px;
+          }
+          .option svg {
+            width: 15px;
+            height: 15px;
+            fill: gray;
+            border: 1px solid #d6d6d6;
+            padding: 5px;
+            border-radius: 100%;
+            float: left;
+            margin-right: 10px;
+          }
+          .option div {
+            display: table;
+          }
+          .option h4 {
+            /* color: #19865C; */
+            font-size: 12px;
+          }
+          .option p {
+            font-weight: 300;
+            font-size: 10px;
+            padding-top: 3px;
+            color: #757575;
+          }
+          @media (max-width: 996px) {
+            body, footer {
+              max-width: 780px;
+            }
+            .logo h2 {
+              margin-left: 0px;
+            }
+          }
+          @media (max-width: 800px) {
+            footer, main {
+              position: relative;
+            }
+            footer {
+              height: 100%;
+            }
+            .option {
+              position: relative;
+              width: 100%;
+              left: auto;
+              right: auto;
+              top: auto;
+              padding: 0 25px;
+              margin-bottom: 60px;
+            }
+            .two {
+              margin-left: 0px;
+              -webkit-transform: none;
+              transform: none;
+            }
+            /* .logo, .option, .release-notes {
+              float: none;
+            } */
+            .figure {
+              margin-top: 10px;
+            }
+            main {
+              padding: 0 25px;
+            }
+            main h2 {
+              font-size: 18px;
+            }
+            main p {
+              font-size: 14px;
+            }
+            header {
+              padding-left: 20px;
+              padding-right: 20px;
+            }
+            footer {
+              overflow: hidden;
+              width: 100%;
+              margin-top: 50px;
+            }
+          }
+          @media (min-width: 801px) and (max-height: 730px) {
+            .figure {
+              margin-top: 80px;
+            }
+          }
+          @media (min-width: 801px) and (max-height: 600px) {
+            footer {
+              position: relative;
+              margin: 135px auto 0;
+            }
+            .figure {
+              margin-top: 50px;
+            }
+          }
+        </style>
+    </head>
+    <body>
+      <header class="u-clearfix">
+          <div class="logo">
+            <!-- <img style='width:90px' src="{% static 'assets/images/logo2.png' %}" alt=""> -->
+            <a>
+              <h2>AdmineStore</h2>
+            </a>
+          </div>
+          <div class="release-notes">
+            <a href="/admin" rel="noopener">Iniciar Sesión</a>
+          </div>
+      </header>
+      <main>
+        <div class="figure">
+          <section class="container">
+          <div>  
+          <svg xmlns="http://www.w3.org/2000/svg" width="400" height="300" viewBox="0 0 105.83333 79.375002">
+            <defs>
+              <filter id="h" x="-0.056689657" width="1.1133794" y="-0.31314284" height="1.6262857" color-interpolation-filters="sRGB">
+                <feGaussianBlur stdDeviation="0.12945685"/>
+              </filter>
+              <filter id="i" x="-0.045620691" width="1.0912414" y="-0.52919996" height="2.0583999" color-interpolation-filters="sRGB">
+                <feGaussianBlur stdDeviation="0.10417969"/>
+              </filter>
+              <filter id="j" x="-0.058453817" width="1.1169076" y="-0.14920917" height="1.2984183" color-interpolation-filters="sRGB">
+                <feGaussianBlur stdDeviation="0.11200487"/>
+              </filter>
+              <filter id="k" x="-0.056689657" width="1.1133794" y="-0.31314284" height="1.6262857" color-interpolation-filters="sRGB">
+                <feGaussianBlur stdDeviation="0.12945685"/>
+              </filter>
+              <filter id="l" x="-0.045620691" width="1.0912414" y="-0.52919996" height="2.0583999" color-interpolation-filters="sRGB">
+                <feGaussianBlur stdDeviation="0.10417969"/>
+              </filter>
+              <filter id="n" x="-0.045620691" width="1.0912414" y="-0.52919996" height="2.0583999" color-interpolation-filters="sRGB">
+                <feGaussianBlur stdDeviation="0.10417969"/>
+              </filter>
+              <filter id="m" x="-0.056689657" width="1.1133794" y="-0.31314284" height="1.6262857" color-interpolation-filters="sRGB">
+                <feGaussianBlur stdDeviation="0.12945685"/>
+              </filter>
+              <filter id="p" x="-0.045620691" width="1.0912414" y="-0.52919996" height="2.0583999" color-interpolation-filters="sRGB">
+                <feGaussianBlur stdDeviation="0.10417969"/>
+              </filter>
+              <filter id="o" x="-0.056689657" width="1.1133794" y="-0.31314284" height="1.6262857" color-interpolation-filters="sRGB">
+                <feGaussianBlur stdDeviation="0.12945685"/>
+              </filter>
+              <filter id="s" x="-0.058453817" width="1.1169076" y="-0.14920917" height="1.2984183" color-interpolation-filters="sRGB">
+                <feGaussianBlur stdDeviation="0.11200487"/>
+              </filter>
+              <filter id="r" x="-0.045620691" width="1.0912414" y="-0.52919996" height="2.0583999" color-interpolation-filters="sRGB">
+                <feGaussianBlur stdDeviation="0.10417969"/>
+              </filter>
+              <filter id="q" x="-0.056689657" width="1.1133794" y="-0.31314284" height="1.6262857" color-interpolation-filters="sRGB">
+                <feGaussianBlur stdDeviation="0.12945685"/>
+              </filter>
+              <filter id="v" x="-0.058453817" width="1.1169076" y="-0.14920917" height="1.2984183" color-interpolation-filters="sRGB">
+                <feGaussianBlur stdDeviation="0.11200487"/>
+              </filter>
+              <filter id="u" x="-0.045620691" width="1.0912414" y="-0.52919996" height="2.0583999" color-interpolation-filters="sRGB">
+                <feGaussianBlur stdDeviation="0.10417969"/>
+              </filter>
+              <filter id="t" x="-0.056689657" width="1.1133794" y="-0.31314284" height="1.6262857" color-interpolation-filters="sRGB">
+                <feGaussianBlur stdDeviation="0.12945685"/>
+              </filter>
+              <filter id="x" x="-0.045620691" width="1.0912414" y="-0.52919996" height="2.0583999" color-interpolation-filters="sRGB">
+                <feGaussianBlur stdDeviation="0.10417969"/>
+              </filter>
+              <filter id="w" x="-0.056689657" width="1.1133794" y="-0.31314284" height="1.6262857" color-interpolation-filters="sRGB">
+                <feGaussianBlur stdDeviation="0.12945685"/>
+              </filter>
+              <filter id="a" x="-0.41420689" width="1.8284138" y="-0.19374195" height="1.387484" color-interpolation-filters="sRGB">
+                <feGaussianBlur stdDeviation="0.11823567"/>
+              </filter>
+              <filter id="b" x="-0.0359249" width="1.0718498" y="-0.072302289" height="1.1446046" color-interpolation-filters="sRGB">
+                <feGaussianBlur stdDeviation="0.076305462"/>
+              </filter>
+              <filter id="c" x="-0.0359249" width="1.0718498" y="-0.072302289" height="1.1446046" color-interpolation-filters="sRGB">
+                <feGaussianBlur stdDeviation="0.093113875"/>
+              </filter>
+              <filter id="e" x="-0.0359249" width="1.0718498" y="-0.072302289" height="1.1446046" color-interpolation-filters="sRGB">
+                <feGaussianBlur stdDeviation="0.093113875"/>
+              </filter>
+              <filter id="d" x="-0.0359249" width="1.0718498" y="-0.072302289" height="1.1446046" color-interpolation-filters="sRGB">
+                <feGaussianBlur stdDeviation="0.076305462"/>
+              </filter>
+              <filter id="f" x="-0.040500004" width="1.081" y="-0.032400001" height="1.0648" color-interpolation-filters="sRGB">
+                <feGaussianBlur stdDeviation="0.1498912"/>
+              </filter>
+              <filter id="g" x="-0.040500004" width="1.081" y="-0.032400001" height="1.0648" color-interpolation-filters="sRGB">
+                <feGaussianBlur stdDeviation="0.1498912"/>
+              </filter>
+            </defs>
+            <g id="sign-container">
+            <g id="sign-pole">
+            <path transform="translate(-24.379459,-230.47617)" d="m 52.290638,261.03318 0.0118,2.77576" fill="none" stroke="#32748f" stroke-width=".26458332px"/>
+            <circle transform="translate(-24.379459,-230.47617)" cx="52.314259" cy="263.67902" r="0.20079985" fill="#32748f"/>
+            <circle transform="translate(-24.379459,-230.47617)" cx="52.278824" cy="261.3663" r="0.37797618" fill="#0c4960"/>
+            <path d="M 22.178055,29.990745 H 36.06868" fill="none" stroke="#32748f" stroke-width="1.48219585" stroke-linecap="round"/>
+            <rect width="0.68508184" height="1.4646577" x="34.159595" y="25.702381" transform="matrix(1.0134516,0,0,0.83220268,0.03702271,8.0288236)" fill="#0c4960" fill-opacity=".68341711" filter="url(#a)"/>
+            </g>
+            <g id="sign">
+            <circle transform="translate(-24.379459,-230.47617)" cx="52.208897" cy="268.42438" r="5.7194705" fill="none" stroke="#0c4960" stroke-width=".3508375" stroke-linecap="round" stroke-linejoin="round" stroke-opacity=".95979901"/>
+            <text style="line-height:125%" x="10.596316" y="46.017445" transform="rotate(-18.301647)" font-weight="400" font-size="10.58333302px" font-family="sans-serif" letter-spacing="0" word-spacing="0" fill="#32748f" stroke-width=".26458332px">
+            <tspan x="10.596316" y="46.017445" style="-inkscape-font-specification:'Arial Narrow Bold Condensed'" font-weight="700" font-stretch="condensed" font-size="3.13972211px" font-family="Arial Narrow" letter-spacing=".13758332px">OPEN</tspan>
+            </text>
+            <path d="m 16.974929,47.307989 a 3.1911378,3.1911378 0 0 1 -2.679937,1.562859 3.1911378,3.1911378 0 0 1 -2.741291,-1.452554" transform="rotate(-18.762479,0.55519866,0.40381201)" fill="none" stroke="#cbcfde" stroke-width=".19574729" stroke-linecap="round" stroke-linejoin="round" filter="url(#b)"/>
+            <path d="M 17.497855,47.61453 A 3.8940752,3.8940752 0 0 1 14.227587,49.521653 3.8940752,3.8940752 0 0 1 10.88245,47.749134" transform="rotate(-18.762479,-0.40167333,0.13438292)" fill="none" stroke="#cbcfde" stroke-width=".23886611" stroke-linecap="round" stroke-linejoin="round" filter="url(#c)"/>
+            <path d="m 16.974929,47.307989 a 3.1911378,3.1911378 0 0 1 -2.679937,1.562859 3.1911378,3.1911378 0 0 1 -2.741291,-1.452554" transform="rotate(160.91154,21.684694,42.604535)" fill="none" stroke="#cbcfde" stroke-width=".19574729" stroke-linecap="round" stroke-linejoin="round" filter="url(#d)"/>
+            <path d="M 17.497855,47.61453 A 3.8940752,3.8940752 0 0 1 14.227587,49.521653 3.8940752,3.8940752 0 0 1 10.88245,47.749134" transform="rotate(160.91154,21.64373,42.768487)" fill="none" stroke="#cbcfde" stroke-width=".23886611" stroke-linecap="round" stroke-linejoin="round" filter="url(#e)"/>
+           </g>
+            </g>
+            <g id="main">
+              <rect width="41.09269" height="30.936447" x="35.947754" y="22.312954" fill="#d4c7a5"/>
+              <rect width="1.135898" height="29.666916" x="76.433716" y="22.312954" fill="#32748f"/>
+              <rect width="12.227582" height="21.982916" x="50.113033" y="30.464676" fill="#b5a483"/>
+              <rect width="44.888424" height="3.8639512" x="33.664497" y="51.938534" fill="#32748f"/>
+              <rect width="1.0792007" height="29.666918" x="34.868553" y="22.312954" fill="#32748f"/>
+              <rect width="1.1358955" height="21.782465" x="62.340614" y="30.464676" fill="#32748f"/>
+              <rect width="1.1358955" height="21.782467" x="48.977139" y="30.665125" fill="#32748f"/>
+              <rect width="42.023388" height="1.0022677" x="35.37627" y="30.011227" fill="#32748f"/>
+              <rect width="42.023388" height="1.0022677" x="35.546227" y="22.312954" fill="#32748f"/>
+            </g>
+            <g id="background-ground">
+              <rect width="105.83334" height="23.718" y="55.656994" ry="0.047063023" fill="#cccccf" fill-opacity=".99497483"/>
+            </g>
+            <g id="ground" fill="none" stroke="#32748f" stroke-width=".26458332px">
+              <path d="M 17.859375,55.751489 H 87.501488"/>
+              <path d="m 13.323661,57.641368 h 7.370535"/>
+              <path d="M 23.623512,57.735864 H 21.733631"/>
+              <path d="M 42.900298,57.263392 H 56.412947"/>
+              <path d="m 17.859375,58.869791 h 6.520089"/>
+              <path d="M 29.860118,58.680802 H 44.506697"/>
+              <path d="M 37.608631,60.381697 H 24.095982"/>
+              <path d="m 43.868861,61.8936 0.472471,-0.04725"/>
+              <path d="m 46.207589,61.869978 h 0.47247"/>
+              <path d="m 47.034412,58.586308 h 0.307105"/>
+              <path d="m 49.255021,58.633555 h 0.566965"/>
+              <path d="M 39.6875,60.027343 H 53.460006"/>
+              <path d="M 50.507069,58.680802 H 62.318822"/>
+              <path d="M 47.459635,61.940847 H 59.20052"/>
+              <path d="m 55.845982,59.507625 h 7.559524"/>
+              <path d="m 60.523437,60.830541 h 6.496465"/>
+              <path d="m 64.279575,59.507625 h 2.031622"/>
+              <path d="m 67.728607,60.759673 0.348335,0.09333"/>
+              <path d="m 68.153832,59.531249 h 0.425223"/>
+              <path d="m 70.468936,59.507625 h 0.425223"/>
+              <path d="M 70.020089,60.830541 H 70.37444"/>
+              <path d="m 71.697357,59.578496 h 0.496094"/>
+              <path d="m 71.201263,60.830541 h 0.472472"/>
+              <path d="m 73.421874,59.436756 h 6.425597"/>
+              <path d="m 72.547805,60.783295 h 7.228794"/>
+              <path d="m 75.359002,57.759486 h 0.496094"/>
+              <path d="m 76.729166,57.735864 h 0.519718 v 0"/>
+              <path d="m 78.052082,57.664992 h 0.519719"/>
+              <path d="m 79.398624,57.688614 h 0.519715"/>
+              <path d="m 80.556176,57.712239 h 0.637833"/>
+              <path d="m 81.926339,57.688614 c 0.614212,0.02363 0.614212,0.02363 0.614212,0.02363"/>
+              <path d="m 84.643044,57.664992 h 7.630392"/>
+              <path d="m 92.982141,57.664992 h 2.196987"/>
+              <path d="m 89.226003,59.011531 h 6.543714"/>
+            </g>
+            <g id="window-left">
+              <rect width="13.063795" height="11.623696" x="35.961159" y="35.857311" fill="#cfe6f3"/>
+              <path d="m 45.455337,42.144344 1.039434,1.559152" fill="none" stroke="#32748f" stroke-width=".07990417" stroke-dasharray=".07990417,.07990417"/>
+              <path d="m 39.229739,35.677459 2.126115,-0.04725 6.756326,11.103052 -1.984375,-0.14174 z" fill="#dfeff7" fill-rule="evenodd" filter="url(#f)"/>
+              <path d="m 40.4944,37.703125 5.433406,8.787944" fill="none" stroke="#32748f" stroke-width=".07963958"/>
+              <path d="M 35.713,35.577007 H 49.556378" fill="none" stroke="#32748f" stroke-width=".68844581"/>
+              <path d="M 35.717723,47.700603 H 49.561101" fill="none" stroke="#32748f" stroke-width=".68844581"/>
+              <path d="m 43.707195,39.49851 1.096344,1.898923" fill="none" stroke="#32748f" stroke-width=".07990417" stroke-dasharray=".15980833,.07990417,.03995208,.07990417"/>
+            </g>
+            <g id="window-right">
+              <rect width="12.896752" height="11.623696" x="63.515774" y="35.87307" fill="#cfe6f3"/>
+              <path d="m 72.842903,42.160101 1.039434,1.559152" fill="none" stroke="#32748f" stroke-width=".07990417" stroke-dasharray=".07990417,.07990417"/>
+              <path d="m 66.417306,35.592764 2.126115,-0.04725 6.756326,11.103052 -1.984375,-0.14174 z" fill="#dfeff7" fill-rule="evenodd" filter="url(#g)"/>
+              <path d="m 67.881966,37.718882 5.433406,8.787944" fill="none" stroke="#32748f" stroke-width=".07963958"/>
+              <path d="M 63.100566,35.592763 H 76.943944" fill="none" stroke="#32748f" stroke-width=".68844581"/>
+              <path d="M 63.105289,47.716359 H 76.948667" fill="none" stroke="#32748f" stroke-width=".68844581"/>
+              <path d="m 71.094761,39.514267 1.096344,1.898923" fill="none" stroke="#32748f" stroke-width=".07990417" stroke-dasharray=".15980833,.07990417,.03995208,.07990417"/>
+            </g>
+            <g id="door">
+              <rect width="8.6118965" height="17.639704" x="51.919819" y="35.237999" ry="0.047291424" fill="#ebe9e9" fill-opacity=".95477385" stroke="#32748f" stroke-width=".49397859" stroke-linecap="round" stroke-linejoin="round" stroke-opacity=".98994978"/>
+              <rect width="5.4754767" height="13.412976" x="53.533466" y="36.902512" ry="0.047062963" fill="#cfe6f3" stroke="#32748f" stroke-width=".21717817" stroke-linecap="round" stroke-linejoin="round" stroke-opacity=".98994978"/>
+              <rect width="1.4646578" height="2.7403274" x="58.912998" y="42.333332" ry="0.044026699" fill="#32748f"/>
+            </g>
+            <g id="flags">
+              <g id="flag1">
+              <path d="m 36.087273,21.53333 h 5.764136 v 9.19453 c -1.016789,3.76721 -5.209027,3.38032 -5.764136,0 z" fill="#ffdf8e" fill-rule="evenodd" stroke="#32748f" stroke-width=".25290081px"/>
+              <rect width="5.4806547" height="0.99218756" x="36.238468" y="22.584072" fill="#fbc34c" filter="url(#h)"/>
+              <rect width="5.4806547" height="0.47247028" x="36.229008" y="30.09164" fill="#fbc34c" fill-opacity=".89447237" filter="url(#i)"/>
+              <path d="m 66.862117,261.85668 c 0.969775,2.58218 4.022796,1.97533 4.598702,-0.0945 z" transform="matrix(1.1511933,0,0,1.165961,-40.70498,-274.09933)" fill="#fcb532" fill-rule="evenodd" filter="url(#j)"/>
+              <rect width="5.681107" height="0.47247028" x="36.145489" y="30.564114" fill="#32748f"/>
+              </g>
+              <g id="flag2">
+              <path d="m 41.851409,21.533329 h 5.764136 v 9.194531 c -1.016789,3.767211 -5.209027,3.38032 -5.764136,0 z" fill="#f0efff" fill-rule="evenodd" stroke="#32748f" stroke-width=".25290081px"/>
+              <rect width="5.4806547" height="0.99218756" x="42.002598" y="22.584064" fill="#cbcfdf" fill-opacity=".94117647" filter="url(#k)"/>
+              <rect width="5.4806547" height="0.47247028" x="41.993137" y="30.091646" fill="#cbcfde" filter="url(#l)"/>
+              <rect width="5.681107" height="0.47247028" x="41.909618" y="30.564119" fill="#32748f"/>
+              </g>
+              <g id="flag3">
+              <path d="m 47.615545,21.53333 h 5.764136 v 9.19453 c -1.016789,3.76721 -5.209027,3.380319 -5.764136,0 z" fill="#ffb68f" fill-rule="evenodd" stroke="#32748f" stroke-width=".25290081px"/>
+              <rect width="5.4806547" height="0.99218756" x="47.766739" y="22.584072" fill="#f39c6f" fill-opacity=".94117647" filter="url(#q)"/>
+              <rect width="5.4806547" height="0.47247028" x="47.757278" y="30.091639" fill="#f39c6e" filter="url(#r)"/>
+              <path d="m 66.862117,261.85668 c 0.969775,2.58218 4.022796,1.97533 4.598702,-0.0945 z" transform="matrix(1.1511933,0,0,1.165961,-29.176706,-274.09935)" fill="#f9764f" fill-opacity=".94117647" fill-rule="evenodd" filter="url(#s)"/>
+              <rect width="5.681107" height="0.47247028" x="47.673759" y="30.564112" fill="#32748f"/>
+              </g>
+              <g id="flag4">
+              <path d="m 53.379681,21.533329 h 5.764136 v 9.194531 c -1.016789,3.767211 -5.209027,3.38032 -5.764136,0 z" fill="#f0efff" fill-opacity=".94974874" fill-rule="evenodd" stroke="#32748f" stroke-width=".25290081px"/>
+              <rect width="5.4806547" height="0.99218756" x="53.530872" y="22.584064" fill="#cbcfdf" fill-opacity=".94117647" filter="url(#m)"/>
+              <rect width="5.4806547" height="0.47247028" x="53.521412" y="30.091646" fill="#cbcfde" filter="url(#n)"/>
+              <rect width="5.681107" height="0.47247028" x="53.437893" y="30.564119" fill="#32748f"/>
+              </g>
+              <g id="flag5">
+                    <path d="m 59.143817,21.53333 h 5.764136 v 9.19453 c -1.016789,3.76721 -5.209027,3.380319 -5.764136,0 z" fill="#82bedf" fill-rule="evenodd" stroke="#32748f" stroke-width=".25290081px"/>
+              <rect width="5.4806547" height="0.99218756" x="59.29501" y="22.584072" fill="#479ddf" filter="url(#t)"/>
+              <rect width="5.4806547" height="0.47247028" x="59.285549" y="30.091639" fill="#479ddf" fill-opacity=".94117647" filter="url(#u)"/>
+              <path d="m 66.862117,261.85668 c 0.969775,2.58218 4.022796,1.97533 4.598702,-0.0945 z" transform="matrix(1.1511933,0,0,1.165961,-17.648433,-274.09934)" fill="#479ddf" fill-opacity=".94117647" fill-rule="evenodd" filter="url(#v)"/>
+              <rect width="5.681107" height="0.47247028" x="59.20203" y="30.564112" fill="#32748f"/>
+              </g>
+              <g id="flag6">
+              <path d="m 64.907953,21.533329 h 5.764136 v 9.194531 c -1.016789,3.767211 -5.209027,3.38032 -5.764136,0 z" fill="#f0efff" fill-opacity=".94117647" fill-rule="evenodd" stroke="#32748f" stroke-width=".25290081px"/>
+              <rect width="5.4806547" height="0.99218756" x="65.059143" y="22.584064" fill="#cbcfdf" fill-opacity=".94117647" filter="url(#o)"/>
+              <rect width="5.4806547" height="0.47247028" x="65.049683" y="30.091646" fill="#cbcfde" filter="url(#p)"/>
+              <rect width="5.681107" height="0.47247028" x="64.966164" y="30.564119" fill="#32748f"/>
+              </g>
+              <g id="flag7">
+              <path d="m 70.672089,21.53333 h 5.764136 v 9.19453 c -1.016789,3.76721 -5.209027,3.380319 -5.764136,0 z" fill="#86c7be" fill-rule="evenodd" stroke="#32748f" stroke-width=".25290081px"/>
+              <rect width="5.4806547" height="0.99218756" x="70.82328" y="22.584072" fill="#53aeaf" fill-opacity=".94117647" filter="url(#w)"/>
+              <rect width="5.4806547" height="0.47247028" x="70.81382" y="30.091639" fill="#53aeaf" fill-opacity=".94117647" filter="url(#x)"/>
+              <rect width="5.681107" height="0.47247028" x="70.730301" y="30.564112" fill="#32748f"/>
+              </g>
+            </g>
+            <g id="top">
+              <rect width="45.415062" height="5.0661044" x="33.232944" y="17.168957" ry="0" fill="#fff" stroke="#32748f" stroke-width=".94008791" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M 33.724314,21.412965 H 78.136516" fill="none" stroke="#e3e3ef" stroke-width=".69459927"/>
+            </g>
+          </svg>  
+          </div>
+          </section>
+        </div>
+        <h2>Welcome to AdmineStore</h2>
+        <p>Pagina de inicio de la aplicación de administración y gestión de recursos para tiendas. <a href="/admin" rel="noopener">Empecemos</a>.</p>
+      </main>
+      <footer class="u-clearfix" style="height: 25px;">
+        <!-- <a>
+        <div class="option one">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                <defs>
+                    <path d="M0 0h24v24H0V0z" id="a"></path>
+                </defs>
+                <clipPath id="b">
+                    <use overflow="visible" xlink:href="#a"></use>
+                </clipPath>
+                <path clip-path="url(#b)" d="M9 21c0 .55.45 1 1 1h4c.55 0 1-.45 1-1v-1H9v1zm3-19C8.14 2 5 5.14 5 9c0 2.38 1.19 4.47 3 5.74V17c0 .55.45 1 1 1h6c.55 0 1-.45 1-1v-2.26c1.81-1.27 3-3.36 3-5.74 0-3.86-3.14-7-7-7zm2.85 11.1l-.85.6V16h-4v-2.3l-.85-.6C7.8 12.16 7 10.63 7 9c0-2.76 2.24-5 5-5s5 2.24 5 5c0 1.63-.8 3.16-2.15 4.1z"></path>
+            </svg>
+            <div>
+                <h4>&copy; APSTORE</h4>
+                <p>Desarrollo por Luis Cotua 2020.</p>
+            </div>
+        </div>
+      </a> -->
+      <a>
+        <div class="option two">
+          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path d="M0 0h24v24H0V0z" fill="none"></path>
+            <path d="M9.4 16.6L4.8 12l4.6-4.6L8 6l-6 6 6 6 1.4-1.4zm5.2 0l4.6-4.6-4.6-4.6L16 6l6 6-6 6-1.4-1.4z"></path>
+          </svg>
+          <div>
+            <h4>&copy; ADMINESTORE 2020.</h4>
+            <p>Desarrollo por <strong>Luis Cotua</strong></p>
+          </div>
+        </div>
+      </a>
+      <!-- <a>
+        <div class="option three">
+          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path d="M0 0h24v24H0z" fill="none"></path>
+            <path d="M16.5 13c-1.2 0-3.07.34-4.5 1-1.43-.67-3.3-1-4.5-1C5.33 13 1 14.08 1 16.25V19h22v-2.75c0-2.17-4.33-3.25-6.5-3.25zm-4 4.5h-10v-1.25c0-.54 2.56-1.75 5-1.75s5 1.21 5 1.75v1.25zm9 0H14v-1.25c0-.46-.2-.86-.52-1.22.88-.3 1.96-.53 3.02-.53 2.44 0 5 1.21 5 1.75v1.25zM7.5 12c1.93 0 3.5-1.57 3.5-3.5S9.43 5 7.5 5 4 6.57 4 8.5 5.57 12 7.5 12zm0-5.5c1.1 0 2 .9 2 2s-.9 2-2 2-2-.9-2-2 .9-2 2-2zm9 5.5c1.93 0 3.5-1.57 3.5-3.5S18.43 5 16.5 5 13 6.57 13 8.5s1.57 3.5 3.5 3.5zm0-5.5c1.1 0 2 .9 2 2s-.9 2-2 2-2-.9-2-2 .9-2 2-2z"></path>
+          </svg>
+          <div>
+            <h4>Comunidad Django</h4>
+            <p>Conéctate, obtén ayuda o contribuye</p>
+          </div>
+        </div>
+      </a> -->
+      </footer>
+    </body>
+</html>

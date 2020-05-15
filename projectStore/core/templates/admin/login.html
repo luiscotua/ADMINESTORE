@@ -1,0 +1,123 @@
+{% extends "admin/login.html" %}
+{% load i18n admin_static %}
+
+{% block extrastyle %}
+<style>
+  #header {
+    background-color: #fff !important;
+  }
+  body.login{
+    background-image:linear-gradient(rgba(236, 242, 246, 0.4),rgba(236, 242, 246, 0.4)), url("{% static '/assets/images/tienda.jpg' %}");
+    background-color: #ecf2f6;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: bottom;
+    overflow: hidden;
+    height: 100vh;
+  }
+
+  body.login #container {
+    border: 1px solid #E1E1E1;
+    border-radius: 5px;
+    border-top: solid .5rem #8a8c8b;
+    box-shadow: 0 0 0.5rem #8A8C8C;
+  }
+  
+  @media screen and (min-width: 480px) and (max-width: 500px) {
+    body.login #container {
+    width: 100%;
+    }
+  }
+  @media screen and (min-width: 501px) and (max-width: 529px) {
+    body.login #container {
+    width: 100%;
+    }
+  }
+
+  .login__top {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: -1.8em 0 -0.5em 0;
+  }
+  .login__title {
+	color: #8a8c8b;
+  margin: 0em 0 1.5em 0
+  }
+
+  .login__title span {
+    color: #f39b53;
+  }
+
+  .login__img {
+    width: 8rem;
+  }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="login__top">
+  <img  class="login__img" src="{% static '/assets/images/mitienda.png'%}" alt="">
+  <h2 class="login__title">AdmineStore <span>Login</span></h2>
+</div>
+{% if form.errors and not form.non_field_errors %}
+<p class="errornote">
+{% if form.errors.items|length == 1 %}{% trans "Please correct the error below." %}{% else %}{% trans "Please correct the errors below." %}{% endif %}
+</p>
+{% endif %}
+
+{% if form.non_field_errors %}
+{% for error in form.non_field_errors %}
+<p class="errornote">
+    {{ error }}
+</p>
+{% endfor %}
+{% endif %}
+
+<div id="content-main">
+<form action="{{ app_path }}" method="post" id="login-form">{% csrf_token %}
+  <div class="form-row">
+    {{ form.username.errors }}
+    {{ form.username.label_tag }} {{ form.username }}
+  </div>
+  <div class="form-row">
+    {{ form.password.errors }}
+    {{ form.password.label_tag }} {{ form.password }}
+    <input type="hidden" name="next" value="{{ next }}" />
+  </div>
+  {% url 'admin_password_reset' as password_reset_url %}
+  {% if password_reset_url %}
+  <div class="password-reset-link">
+    <a href="{{ password_reset_url }}">{% trans 'Forgotten your password or username?' %}</a>
+  </div>
+  {% endif %}
+  <div class="submit-row">
+    <label>&nbsp;</label><input type="submit" value="{% trans 'Log in' %}" />
+  </div>
+</form>
+
+<script type="text/javascript">
+document.getElementById('id_username').focus()
+</script>
+</div>
+{% endblock %}
+
+{% block branding %}
+    <!-- <div class="">
+      <div class="suit-login-graphic">
+          <img style="width: 100px"  class="logo-menu" src="{% static '/assets/images/tienda.png'%}" alt="logo">
+      </div>
+    </div> -->
+    <div class="login__top">
+      <img  class="login__img" src="{% static '/assets/images/tienda.png'%}" alt="">
+      <h2 class="login__title">Form <span>Name</span></h2>
+   </div>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script type="text/javascript">
+      if (navigator.userAgent.search("Chrome") >= 0) {
+        $('body').css('background-blend-mode', 'none');
+      }
+    </script>
+{% endblock %}
+

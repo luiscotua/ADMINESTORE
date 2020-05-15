@@ -1,0 +1,97 @@
+{% extends "admin/change_form.html" %}
+{% load i18n admin_static %}
+
+{% load static %}
+
+{% block extrastyle %}{{ block.super }}<link rel="stylesheet" type="text/css" href="{% static 'assets/css/bootstrap.css' %}" />{% endblock %}
+
+{% block content %}
+<nav>
+  <div class="nav nav-tabs" id="nav-tab" role="tablist">
+    <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">Datos Visita</a>
+    
+    <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false">Realizar Checklist</a>
+    <a class="nav-item nav-link" id="nav-contact-tab" data-toggle="tab" href="#nav-contact" role="tab" aria-controls="nav-contact" aria-selected="false">Observación</a>
+    
+  </div>
+</nav>
+<div class="tab-content" id="nav-tabContent">
+  <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
+    <form action="" method="post">
+      {% csrf_token %}
+      <br>
+      <div class="form-row">
+        <div class="form-group col-md-6">
+          <label for="inputAddress">Código Tienda</label>
+          <select id="inputState" class="form-control" required>
+            <option selected>Seleccione codigo...</option>
+            <option >{{object_id}}</option>
+          </select>
+        </div>           
+      </div>
+      <div class="form-row">
+        <div class="form-group col-md-6">
+          <label for="inputAddress">Jefe de zona</label>
+          <input type="text" class="form-control" id="inputAddress" value="{{r.checklist.tienda.jefe_zona.get_full_name}}" readonly>
+        </div> 
+      </div>
+      <div class="form-row">
+        <div class="form-group col-md-4">
+          <label for="inputState">Región</label>
+          <input type="text" class="form-control" id="inputAddress" value="{{r.checklist.tienda.municipio.departamento.region.nombre_region}}" readonly>
+        </div>
+        <div class="form-group col-md-4">
+          <label for="inputState">Departamento</label>
+          <input type="text" class="form-control" id="inputAddress" value="{{r.checklist.tienda.municipio.departamento.nombre_departamento}}" readonly>
+        </div>
+        <div class="form-group col-md-4">
+          <label for="inputState">Municipio</label>
+          <input type="text" class="form-control" id="inputAddress" value="{{r.checklist.tienda.municipio.nombre_municipio}}" readonly>
+        </div>
+      </div>
+      <button type="button" class="btn btn-primary btn-lg" onclick="">Guardar</button>
+    </form>
+  </div>
+  <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
+    <table class="table">
+      <caption>Lista de piezas</caption>
+      <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Nombre</th>
+          <th scope="col">Novedad</th>
+          <th scope="col">Cantidad</th>
+        </tr>
+      </thead>
+      {% for piezas in p %}
+        <tbody>
+          <tr>
+            <td scope="row">{{ forloop.counter }}</td>
+            <td>{{piezas}}</td>
+            <td><input type="checkbox" name="" value="" id="{{piezas.id_pieza}}" onchange="comprobar()">{{p}}</td>
+            <td><input type="number" class="form-control" id="cantidad" value="0" readonly="true"></td>
+          </tr>
+        </tbody>
+      {% endfor %}
+    </table>    
+  </div>
+  <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">
+    <div class="mb-3">
+      <br>
+      <label for="validationTextarea">Observación</label>
+      <textarea style="min-height:100px" style="max-height:150px" class="form-control" id="validationTextarea" placeholder="Describa las observaciones de la visita."></textarea>
+    </div>
+  </div>
+  
+</div>
+
+
+<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+<script>
+  function comprobar(){
+    document.getElementById("cantidad").readOnly = !document.getElementById("1").checked;
+  }
+</script>
+{% endblock %}

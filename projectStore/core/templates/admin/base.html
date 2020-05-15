@@ -1,0 +1,22 @@
+{# Template: your_app/templates/admin/base_site.html #}
+{% extends "admin/base_site.html" %}
+{% load static i18n %}
+{% load static %}
+{# Setup favicon #}
+{% block extrahead %}<link rel="shortcut icon" type="image/ico" href="{% static 'assets/images/favicon.ico' %}"/>{% endblock %}
+{% block extrastyle %}{{ block.super }}<link rel="stylesheet" type="text/css" href="{% static 'assets/css/base.css' %}" />{% endblock %}
+
+{# Setup browser tab label #}
+{% block title %}{{ title }} |  {% trans "AdmineStore" %}{% endblock %}
+
+{# Setup branding #}
+{% block branding %}
+    <h1 id="site-name" style="font-size: 21px">
+        <a href="{% url 'admin:index' %}">
+            {# Your logo here #}
+            <!-- <img style="font-size: 20px" src="{% static '/assets/images/mitienda.png' %}" alt="Apstore" height="50%" width="50%"> 
+            <span class="icon-edit"></span> -->
+            {% trans "AdmineStore" %}
+        </a>
+    </h1>
+{% endblock %}

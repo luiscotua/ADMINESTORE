@@ -1,0 +1,106 @@
+{% extends "admin/base_site.html" %}
+{% load i18n admin_static %}
+{% load static %}
+{% block extrastyle %}{{ block.super }}
+<!-- <link rel="stylesheet" type="text/css" href="{% static 'admin/css/dashboard.css' %}" /> -->
+
+<style media="screen">
+.content-block{
+  padding: 0;
+}
+.main-icon{
+  width: 85px;
+  height: 85px;
+  border-radius: 50%;
+  display: inline-block;
+}
+.main-icon svg{
+  margin-top:20px;
+}
+.main-item p{
+  color:#6f7e95;
+  font-size: 16px;
+  margin-top: 1em;
+}
+.main {
+  text-align: center;
+}
+.main .main-item {
+  display: inline-block;
+  margin: 2.5em;
+}
+.main-item:hover {
+  text-decoration: none;
+}
+.panel-body {
+  margin-right: 0%;
+}
+
+</style>
+{% endblock %}
+
+{% block content %}
+{% if request.user.is_superuser %}
+<div  class="col-md-12 config-col" id="luis">
+<!-- <ul class="nav nav-tabs" id="configTab"><br>
+</ul> -->
+  <div class="panel panel-default">
+    <div style="text-align:center" class="panel-body">
+      <br>
+        <h3 style="color:#6f7e95; font-size:20px;">Bienvenido a la plataforma de gestión y administración de recursos para tiendas y supermercados</h3>
+      <br>
+      <div class="main">
+        <a href="/admin/checklist/visita/add/" class="main-item">
+          <img src="{% static '/assets/images/checklist.svg' %}" alt="" style="width:100px;">
+          <p>
+            Chelist <br> Tienda
+          </p>
+        </a>
+        <a href="/admin/checklist/visita/" class=" main-item">
+          <img src="{% static '/assets/images/list.svg' %}" alt="" style="width:100px;">
+          <p>
+            Listado de <br> Visitas
+          </p>
+        </a>
+        <a href="/admin/checklist/checkpieza/export/?" class=" main-item">
+          <img src="{% static '/assets/images/excel.svg' %}" alt="" style="width:100px;">
+          <p>
+            Exportar <br> Descargar
+          </p>
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% else %}
+<div  class="col-md-12 config-col">
+  <!-- <ul class="nav nav-tabs" id="configTab"><br>
+    <div style="box-shadow: 0 1px 0px 0px rgba(0,0,0,.2)" class="panel panel-default">
+  </ul> -->
+  <div class="panel panel-default">
+    <div style="text-align:center" class="panel-body">
+      <br>
+      <h3 style="color:#6f7e95; font-size:20px;">Bienvenido a la plataforma de gestión y administración de recursos para tiendas y supermercados</h3>
+      <br>
+      <div class=" main">
+        <a href="/admin/checklist/visita/add/" class="main-item">
+          <img src="{% static '/assets/images/checklist.svg' %}" alt="" style="width:100px;">
+          <p>
+            Chelist <br> Tienda
+          </p>
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endif %}
+
+{% endblock %}
+<!-- 
+{% block sidebar %}
+<div id="content-related">
+
+</div>
+{% endblock %} -->

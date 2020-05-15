@@ -1,0 +1,6 @@
+Django~=2.2
+django-jet==1.0.8
+google-api-python-client==1.4.1
+django-smart-selects==1.5.4
+django-jquery-3.1.0
+django-import-export==2.0.2
